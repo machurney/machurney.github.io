@@ -28,6 +28,52 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="portfolio.css">
 
+	<script> $(document).ready(function() {
+	// Fancybox
+	$(".fancybox").fancybox({
+		openEffect		: 'fade',
+		closeEffect		: 'fade',
+		closeBtn		: true,
+		
+		helpers		: {
+			title	: { type : 'inside' },
+			buttons	: {},
+			arrows  : {},
+			overlay : {
+				closeClick : true,  // if true, fancyBox will be closed when user clicks on the overlay
+				speedOut   : 200,   // duration of fadeOut animation
+				showEarly  : true,  // indicates if should be opened immediately or wait until the content is ready
+				css        : {},    // custom CSS properties
+				locked     : true   // if true, the content will be locked into overlay
+			}
+		}
+	});
+
+
+	// init Isotope
+	var $grid = $('.grid-container').isotope({
+  		// options
+  		itemSelector: '.grid-item',
+  		layoutMode: 'fitRows',
+    	// resizesContainer : false,
+    	masonry: {
+    		isFitWidth: true,
+    		gutterWidth: 10
+    	}
+
+
+	});
+	
+	// filter items on button click
+	$('.filter-button-group').on( 'click', 'button', function() {
+  		var filterValue = $(this).attr('data-filter');
+  		$grid.isotope({ filter: filterValue });
+	});
+
+	// show all items
+	$grid.isotope({ filter: '*' });
+
+});</script>
 </head>
 <body>
 	<div class="green-bars">
@@ -252,52 +298,5 @@
 	</footer>
 	<!-- wrapper -->
 	</div>
-
-<script> $(document).ready(function() {
-	// Fancybox
-	$(".fancybox").fancybox({
-		openEffect		: 'fade',
-		closeEffect		: 'fade',
-		closeBtn		: true,
-		
-		helpers		: {
-			title	: { type : 'inside' },
-			buttons	: {},
-			arrows  : {},
-			overlay : {
-				closeClick : true,  // if true, fancyBox will be closed when user clicks on the overlay
-				speedOut   : 200,   // duration of fadeOut animation
-				showEarly  : true,  // indicates if should be opened immediately or wait until the content is ready
-				css        : {},    // custom CSS properties
-				locked     : true   // if true, the content will be locked into overlay
-			}
-		}
-	});
-
-
-	// init Isotope
-	var $grid = $('.grid-container').isotope({
-  		// options
-  		itemSelector: '.grid-item',
-  		layoutMode: 'fitRows',
-    	// resizesContainer : false,
-    	masonry: {
-    		isFitWidth: true,
-    		gutterWidth: 10
-    	}
-
-
-	});
-	
-	// filter items on button click
-	$('.filter-button-group').on( 'click', 'button', function() {
-  		var filterValue = $(this).attr('data-filter');
-  		$grid.isotope({ filter: filterValue });
-	});
-
-	// show all items
-	$grid.isotope({ filter: '*' });
-
-});</script>
 </body>
 </html>
