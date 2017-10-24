@@ -376,11 +376,13 @@ nav {
 /* FOOTER */
 
 footer {
-	padding-bottom: 50px;
+	padding-bottom: 30px;
 }
 
 
-
+footer p {
+	padding: 20px; 
+}
 
 
 
